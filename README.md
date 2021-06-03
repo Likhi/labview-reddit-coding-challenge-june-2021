@@ -17,5 +17,5 @@ The following VIs are required:
 - split u8 into lower middle and upper bits.vi // a subvi I made to do some boolean data manipulation
 
 # Expected results
-I copied and pasted the contents of the "Data to Encode.txt" some number of times... maybe 12 times? But the maximum value I can encode and match as reported by "Test Encode and Decode.vi" is 1000497.
-This can be observed in the provided "front panel preview.png" file.
+I copied and pasted the contents of the "Data to Encode.txt" some number of times... maybe 12 times? But the maximum value I can encode 
+and match as reported by "Test Encode and Decode.vi" is 1000497 with a score of 0.0289418. In this algorithm, the number of characters I can encode is limited to the number of pixels in the image. These results can be observed in the provided "front panel preview.png" file.
