@@ -1,25 +1,21 @@
 # LabVIEW Reddit Coding Challenge - June 2021
 
-This month's challenge is a secret message encoder/decoder.  Your mission is to hide and transmit a secret message inside of an image to your recipient.  You must program an Encoder and a Decoder to hide this message somehow inside the image/image file such that:
+Submitter: u/itmelo
 
-- the visual perception of the image does not change too much
-- the size of the file does not change too much
-- the most text can be stored as possible
+Challenge URL: https://www.reddit.com/r/LabVIEW/comments/nplfq0/labview_reddit_coding_challenge_june_2021/
 
-Also, the recipient will only have your decoder VI (they will not have the original image to calculate the difference).
+In this code challenge, I implemented a way to encode a text message in the Nyx the Owl.bmp. I used a classic stegenography approach in
+which I encode the ASCII value of each character into the LSBs of each pixels' R/G/B components. In particular, the my implementation 
+modifies a single color component, at most, by 111b (7); the whole pixel may change by up to 127 (1111111b). See VI for details.
 
-There are no limits on toolkits or libraries, but try to stick to functions available in base LabVIEW.
+# Code
 
-Included in the source are several files to help you. They are: 
-- **_Image Comparison Score.vi_** - This VI does several different image comparison algorithms and a file size comparison.  The scoring of each comparison is weighted and everyone will be judged objectively using this scoring.  The closer to Zero (0) the better.
-Test Encode and Decode.vi - This VI runs your encoder and decoder, computes the amount of data stored, and runs the Image Comparison Score.vi for the image perception score.
-- **_Data to Encode.txt_** - This is your "secret document" (which is just generated Lorem Ipsum text).  Store as much as you can.  If you can store more than is provided, repeat the text as many times as needed.
-- **_Nyx the Owl.bmp (.bmp, .jpg, OR .png)_** - pick your file type and use it as the image to encode the text into.  (Note: the pHash comparison algorithm requires BMPs.  So if you choose jpg or png, BMP versions will be created and saved to disk and used for the pHash comparison. If BMPs are used, new files will not be created.)
-- **_Encode Message.vi_** - This is where your code goes to encode the message and save the new image.
-- **_Decode Message.vi_** - This is where your code reads in the encoded image and decodes the message.
+The following VIs are required:
+- Encode Message.vi                            // my encoding implementation VI
+- Decode Message.vi                            // my decoding implementation VI
+- calculate rgb with encoded ascii.vi          // a subvi I made to do the LSB-loading
+- split u8 into lower middle and upper bits.vi // a subvi I made to do some boolean data manipulation
 
-To submit, send or provide links to download your Encoder and Decoder VIs.  If you would rather others not see your code until submission is over, send the via email to (q -at- qsi.dev).
-
-Judging will be scored by the amount of correct data stored and the image comparison score as provided in the source code.  (I will run the **_Test Encode and Decode.vi_** on everyone's submissions and tally the scores).
-
-The submission deadline will be June 25th.
+# Expected results
+I copied and pasted the contents of the "Data to Encode.txt" some number of times... maybe 12 times? But the maximum value I can encode and match as reported by "Test Encode and Decode.vi" is 1000497.
+This can be observed in the provided "front panel preview.png" file.
