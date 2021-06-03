@@ -11,6 +11,7 @@ modifies a single color component, at most, by 111b (7); the whole pixel may cha
 # Code
 
 The following VIs are required:
+- Test Encode and Decode.vi                    // the main VI to test algorithms and calculate score
 - Encode Message.vi                            // my encoding implementation VI
 - Decode Message.vi                            // my decoding implementation VI
 - calculate rgb with encoded ascii.vi          // a subvi I made to do the LSB-loading
