@@ -20,3 +20,6 @@ The following VIs are required:
 # Expected results
 I copied and pasted the contents of the "Data to Encode.txt" some number of times... maybe 12 times? But the maximum value I can encode 
 and match as reported by "Test Encode and Decode.vi" is 1000497 with a score of 0.0289418. In this algorithm, the number of characters I can encode is limited to the number of pixels in the image. These results can be observed in the provided "front panel preview.png" file.
+
+# Improvement ideas
+For the sake of the challenge, I think I'm satisfied with what I submitted. But I remembered I have VIs that can compress and decompress a string using .NET gzip (mscorplib 2.0). The algorithm I've used would have to extend the 7-bit to accept 8-bit because the characters would be exepcted to use the 256 values of extended ASCII. As a result, instead of filling the 2/2/3 r/g/b LSBs, fill the 2/3/3 r/g/b LSBs (the full 8-bits!). This would allow, maybe, 30 times more bytes to be stored!  
